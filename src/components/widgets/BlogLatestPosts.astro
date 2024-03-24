@@ -13,7 +13,6 @@ export interface Props extends Widget {
   title?: string;
   linkText?: string;
   linkUrl?: string | URL;
-  information?: string;
   count?: number;
 }
 
@@ -21,7 +20,6 @@ const {
   title = await Astro.slots.render("title"),
   linkText = "View all posts",
   linkUrl = getBlogPermalink(),
-  information = await Astro.slots.render("information"),
   count = 4,
 
   id,
@@ -49,7 +47,6 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
           </div>
         )}
 
-        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
       </div>
 
       <Grid posts={posts} />
