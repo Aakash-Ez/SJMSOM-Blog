@@ -1,5 +1,5 @@
 site:
-  name: SJMSOM Blogs
+  name: SOMsphere
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: SJMSOM Blogs
-    template: '%s — SJMSOM Blogs'
+    default: SOMsphere
+    template: '%s — SOMsphere'
   description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: SJMSOM Blogs
+    site_name: SOMsphere
     images:
       - url: '~/assets/images/default.png'
         width: 1200

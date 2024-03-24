@@ -3,7 +3,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Pages',
+      text: 'SOMCast',
       links: [
         {
           text: 'Features (Anchor Link)',
@@ -36,7 +36,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Landing',
+      text: 'SOMClips',
       links: [
         {
           text: 'Lead Generation',
@@ -65,7 +65,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Blog',
+      text: 'SOMShots',
       links: [
         {
           text: 'Blog List',
@@ -90,7 +90,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Widgets',
+      text: 'SOMInks',
       href: '#',
     },
   ],

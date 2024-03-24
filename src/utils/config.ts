@@ -80,7 +80,7 @@ const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
   analytics?: unknown;
 };
 
-const DEFAULT_SITE_NAME = 'SJMSOM Blogs';
+const DEFAULT_SITE_NAME = 'SOMsphere';
 
 const getSite = () => {
   const _default = {

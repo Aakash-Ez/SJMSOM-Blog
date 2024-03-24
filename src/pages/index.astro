@@ -3,14 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'SJMSOM - Articles and Stories from within the campus!',
@@ -50,6 +45,17 @@ const metadata = {
   <!-- Note Widget ******************* -->
 
   <Note />
+
+    <!-- Stats Widget ****************** -->
+
+    <Stats
+    stats={[
+      { title: 'Downloads', amount: '132K' },
+      { title: 'Stars', amount: '24.8K' },
+      { title: 'Forks', amount: '10.3K' },
+      { title: 'Users', amount: '48.4K' },
+    ]}
+  />
 
   <!-- Features Widget *************** -->
   <!-- HighlightedPosts Widget ******* -->
@@ -94,17 +100,6 @@ const metadata = {
         description:
           "SJMSOM's dedicated career development center provides comprehensive support to students in their job search. The center offers resume and cover letter writing workshops, mock interviews, and career counseling sessions. Additionally, the center organizes industry visits, career fairs, and alumni interactions, connecting students with potential employers and providing valuable insights into the job market. SJMSOM's strong alumni network also plays a crucial role in career development, offering mentorship opportunities and facilitating job placement for graduates.",
       },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
     ]}
   />
 

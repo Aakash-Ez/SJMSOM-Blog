@@ -36,7 +36,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
     <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
       <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
         {title && (
-          <div class="md:max-w-sm">
+          <div class="md:max-w">
             <h2
               class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
               set:html={title}
