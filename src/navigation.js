@@ -4,20 +4,24 @@ export const headerData = {
   links: [
     {
       text: 'SOMCast',
-      href: '#',
+      href: '/category/somcast',
     },
     {
       text: 'SOMClips',
-      href: '#',
+      href: '/comingsoon',
     },
     {
       text: 'SOMShots',
-      href: '#',
+      href: '/comingsoon',
     },
     {
       text: 'SOMInks',
-      href: getBlogPermalink(),
+      href: '/category/sominks',
     },
+    {
+      text: 'SOMEngage',
+      href: '/comingsoon'
+    }
   ],
   actions: [{ text: 'Placement Report', href: 'https://www.som.iitb.ac.in/wp-content/uploads/2016/07/Final-Placement-Report-2021-23.pdf', target: '_blank' }],
 };

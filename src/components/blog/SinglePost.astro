@@ -9,6 +9,7 @@ import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
 import type { Post } from '~/types';
+import { boolean } from 'astro/zod';
 
 export interface Props {
   post: Post;
@@ -68,7 +69,7 @@ const { Content } = post;
       </p>
 
       {
-        post.image ? (
+        (post.image && post.showimage) ? (
           <Image
             src={post.image}
             class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"

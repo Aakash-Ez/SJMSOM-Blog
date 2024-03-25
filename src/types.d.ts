@@ -43,6 +43,7 @@ export interface Post {
   /**  */
   readingTime?: number;
   contexttype?: string;
+  showimage?: boolean;
 }
 
 export interface MetaData {

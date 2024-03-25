@@ -281,7 +281,7 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## Acknowledgements
 
-Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/astrowind/graphs/contributors).
+Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://www.som.iitb.ac.in/wp-content/uploads/2016/07/Final-Placement-Report-2021-23.pdf/graphs/contributors).
 
 ## License
 

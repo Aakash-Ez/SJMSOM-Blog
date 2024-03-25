@@ -56,6 +56,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     contexttype,
     draft = false,
     metadata = {},
+    showimage,
   } = data;
 
   const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
@@ -76,7 +77,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     title: title,
     excerpt: excerpt,
     image: image,
-
+    showimage: showimage,
     category: category,
     tags: tags,
     author: author,
@@ -248,12 +249,12 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   const posts = await fetchPosts();
   const categories = new Set<string>();
   posts.map((post) => {
-    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
+    typeof post.category === 'string' && categories.add(post.category);
   });
 
   return Array.from(categories).flatMap((category) =>
     paginate(
-      posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
+      posts.filter((post) => typeof post.category === 'string' && category === post.category),
       {
         params: { category: category, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
@@ -291,12 +292,12 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
   const posts = await fetchPosts();
   const tags = new Set<string>();
   posts.map((post) => {
-    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
+    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag));
   });
 
   return Array.from(tags).flatMap((tag) =>
     paginate(
-      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
+      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem === tag)),
       {
         params: { tag: tag, blog: TAG_BASE || undefined },
         pageSize: blogPostsPerPage,
