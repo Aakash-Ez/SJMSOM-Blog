@@ -1,0 +1,109 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import BlogLatestPostsByType from '~/components/widgets/BlogLatestPostsByType.astro';
+
+const metadata = {
+  title: 'SJMSOM - Articles and Stories from within the campus!',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Brochure',
+        href: 'https://www.som.iitb.ac.in/wp-content/uploads/2024/01/Brochure_SJMSOM_MBA_2024.pdf',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/IMG_0778.JPG', alt: 'SJMSOM Hero Image' }}
+  >
+    <Fragment slot="title">
+      A repository of everything that makes us SJMSOM:
+      <span class="text-accent dark:text-white highlight"> Stories, Reflections</span> and a lot more!
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">SJMSOM, IIT Bombay</span> is renowned for its excellence in management education, blending
+        rigorous academics with industry insights to groom future leaders.
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note />
+
+    <!-- Stats Widget ****************** -->
+
+    <Stats
+    stats={[
+      { title: 'Year Long Legacy', amount: '29' },
+      { title: 'Alumni Network', amount: '5K+' },
+      { title: 'Forks', amount: '10.3K' },
+      { title: 'Users', amount: '48.4K' },
+    ]}
+  />
+
+  <!-- Features Widget *************** -->
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPostsByType title="Find out more content in our Blog" contexttype='SOMCast' />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="A small effort from our side to try and answer any and every question that you have. Have we missed anything? Feel free to drop a mail and check out the contact page!"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What is the student life like at SJMSOM?',
+        description:
+          'SJMSOM goes beyond academics to offer a vibrant student life. The institute fosters a strong sense of community through various clubs and committees. These student-led organizations cater to diverse interests, from finance and marketing to dramatics and social work. Additionally, SJMSOM organizes cultural events, festivals, and industry interactions throughout the year, providing a well-rounded experience outside the classroom. The close proximity to IIT Bombay allows for interaction with a wider student network and access to various facilities like libraries, sports grounds, and cultural centers.',
+      },
+      {
+        title: 'What are the research opportunities available at SJMSOM?',
+        description:
+          'SJMSOM is a research-driven institution with faculty actively engaged in various areas of management studies. Students have the opportunity to participate in ongoing research projects under the guidance of professors. The institute also offers research fellowships and grants to support student research endeavors. Additionally, SJMSOM organizes seminars, workshops, and conferences, exposing students to cutting-edge research and fostering a stimulating academic environment.',
+      },
+      {
+        title: 'How does SJMSOM focus on innovation and entrepreneurship?',
+        description:
+          "SJMSOM recognizes the importance of fostering an innovation mindset and supporting aspiring entrepreneurs. The institute's curriculum incorporates courses on design thinking, venture creation, and business model innovation. SJMSOM also houses the Centre for Entrepreneurship and Innovation (CEI), which provides incubation facilities, mentorship programs, and funding opportunities for student startups.  Additionally, events like speaker sessions and pitch competitions help students develop their entrepreneurial skills and connect with potential investors.",
+      },
+      {
+        title: 'What international exposure does SJMSOM offer?',
+        description:
+          'SJMSOM offers various avenues for students to gain international exposure. The institute has established student exchange programs with prestigious universities worldwide, allowing students to spend a semester or a year studying abroad. Additionally, SJMSOM facilitates international immersion trips and short-term study programs, providing students with global perspectives on business practices and cultural understanding. The institute also welcomes international students, creating a diverse learning environment with a global outlook.',
+      },
+      {
+        title: 'How does SJMSOM integrate technology into its curriculum?',
+        description:
+          'SJMSOM acknowledges the growing importance of technology in business and integrates it into its curriculum in various ways. The institute offers courses in business analytics, big data management, and digital marketing, equipping students with the skills needed to thrive in a tech-driven world. Additionally, SJMSOM utilizes technology in the classroom through online learning platforms, case studies involving real-world technology applications, and guest lectures from industry leaders at the forefront of technological advancements.',
+      },
+      {
+        title: 'How does SJMSOM support career development?',
+        description:
+          "SJMSOM's dedicated career development center provides comprehensive support to students in their job search. The center offers resume and cover letter writing workshops, mock interviews, and career counseling sessions. Additionally, the center organizes industry visits, career fairs, and alumni interactions, connecting students with potential employers and providing valuable insights into the job market. SJMSOM's strong alumni network also plays a crucial role in career development, offering mentorship opportunities and facilitating job placement for graduates.",
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+</Layout>

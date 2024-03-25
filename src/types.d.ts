@@ -42,6 +42,7 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+  contexttype?: string;
 }
 
 export interface MetaData {

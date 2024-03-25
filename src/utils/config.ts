@@ -51,6 +51,14 @@ export interface AppBlogConfig {
       follow: boolean;
     };
   };
+  context: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
   tag: {
     isEnabled: boolean;
     pathname: string;
@@ -159,6 +167,14 @@ const getAppBlog = () => {
     category: {
       isEnabled: true,
       pathname: 'category',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+    context: {
+      isEnabled: true,
+      pathname: 'context',
       robots: {
         index: true,
         follow: true,

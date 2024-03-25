@@ -53,6 +53,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     tags: rawTags = [],
     category: rawCategory,
     author,
+    contexttype,
     draft = false,
     metadata = {},
   } = data;
@@ -70,6 +71,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
     publishDate: publishDate,
     updateDate: updateDate,
+    contexttype: contexttype,
 
     title: title,
     excerpt: excerpt,
@@ -113,6 +115,16 @@ const load = async function (): Promise<Array<Post>> {
   return results;
 };
 
+const loadByType = async function (contexttype: {contexttype: string}): Promise<Array<Post>> {
+  const posts = await getCollection('post');
+  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+  const results = (await Promise.all(normalizedPosts))
+    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .filter((post) => !post.draft)
+    .filter((post) => post.contexttype === contexttype.contexttype);
+  return results;
+};
+
 let _posts: Array<Post>;
 
 /** */
@@ -126,6 +138,7 @@ export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
 export const blogListRobots = APP_BLOG.list.robots;
 export const blogPostRobots = APP_BLOG.post.robots;
 export const blogCategoryRobots = APP_BLOG.category.robots;
+export const blogContextRobots = APP_BLOG.context.robots;
 export const blogTagRobots = APP_BLOG.tag.robots;
 
 export const blogPostsPerPage = APP_BLOG?.postsPerPage;
@@ -134,6 +147,14 @@ export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 export const fetchPosts = async (): Promise<Array<Post>> => {
   if (!_posts) {
     _posts = await load();
+  }
+
+  return _posts;
+};
+
+export const fetchPostsByType = async (contexttype: {contexttype: string}): Promise<Array<Post>> => {
+  if (!_posts) {
+    _posts = await loadByType(contexttype);
   }
 
   return _posts;
@@ -175,6 +196,13 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
   return posts ? posts.slice(0, _count) : [];
 };
 
+export const findLatestPostsByType = async ({ count, contexttype }: { count?: number, contexttype: string }): Promise<Array<Post>> => {
+  const _count = count || 4;
+  const posts = await fetchPostsByType({contexttype});
+
+  return posts ? posts.slice(0, _count) : [];
+};
+
 /** */
 export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
@@ -184,6 +212,13 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
   });
 };
 
+export const getStaticPathsBlogListByType = async ({ paginate, contexttype } : { paginate: PaginateFunction, contexttype: string}) => {
+  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
+  return paginate(await fetchPostsByType({contexttype}), {
+    params: { blog: BLOG_BASE || undefined },
+    pageSize: blogPostsPerPage,
+  });
+};
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
@@ -195,7 +230,18 @@ export const getStaticPathsBlogPost = async () => {
   }));
 };
 
-/** */
+
+export const getStaticPathsBlogPostByType = async ({ contexttype }: { contexttype: string }) => {
+  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
+  return (await fetchPostsByType({contexttype: contexttype})).flatMap((post) => ({
+    params: {
+      blog: post.permalink,
+    },
+    props: { post },
+  }));
+  ;
+};
+
 export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
@@ -212,6 +258,27 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
         params: { category: category, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
         props: { category },
+      }
+    )
+  );
+};
+
+export const getStaticPathsBlogContext = async ({ paginate }: { paginate: PaginateFunction }) => {
+  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+
+  const posts = await fetchPosts();
+  const contexttypes = new Set<string>();
+  posts.map((post) => {
+    typeof post.contexttype === 'string' && contexttypes.add(post.contexttype);
+  });
+
+  return Array.from(contexttypes).flatMap((contexttype) =>
+    paginate(
+      posts.filter((post) => typeof post.contexttype === 'string' && contexttype === post.contexttype),
+      {
+        params: { contexttype: contexttype, blog: CATEGORY_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { contexttype },
       }
     )
   );
