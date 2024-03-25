@@ -8,11 +8,11 @@ export const headerData = {
     },
     {
       text: 'SOMClips',
-      href: '/comingsoon',
+      href: '/category/somclips',
     },
     {
       text: 'SOMShots',
-      href: '/comingsoon',
+      href: '/somshots',
     },
     {
       text: 'SOMInks',

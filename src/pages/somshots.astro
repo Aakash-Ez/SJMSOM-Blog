@@ -1,0 +1,35 @@
+---
+import Layout from '~/layouts/LandingLayout.astro';
+
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'SOMShots - A Gallery of life at SJMSOM IIT Bombay',
+};
+---
+
+<Layout metadata={metadata}>
+  <CallToAction
+    title="Ethnic Day!"
+    subtitle="SJMSOM vibrated with cultural pride as the institute celebrated a vibrant Ethnic Day. Students donned traditional attire from across India, showcasing the nation's rich tapestry through a dazzling display of colors and customs."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Check it out!',
+        href: '/somshots/ethnicday',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Batch Photoshoot!"
+    subtitle="Cameras clicked and laughter filled the air at SJMSOM as the recent batch captured their camaraderie in a lively photoshoot. This tradition serves as a lasting memento of their time at the institute, forever etching their friendships and experiences within the SJMSOM walls.."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Check it out!',
+        href: '/somshots/batchphotoshoot',
+      },
+    ]}
+  />
+</Layout>
