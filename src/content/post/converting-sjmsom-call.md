@@ -7,8 +7,10 @@ image: '~/assets/images/blogs/interview-experience/hero.jpg'
 category: SOMInks
 contexttype: SOMInks
 tags:
-  - astro
-  - tailwind css
+  - interview-experience
+  - mba-journey
+  - mba
+  - admissions
 showimage: true
 ---
 

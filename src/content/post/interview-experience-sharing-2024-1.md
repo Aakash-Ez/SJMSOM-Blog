@@ -5,9 +5,10 @@ excerpt: Here is the Part 1 of the interview experience featuring Aditya Bose, A
 image: '~/assets/images/blogs/interview-experiences-video-2024/1.jpg'
 category: SOMClips
 tags:
-  - podcast
-  - filmmaking
-  - inter-iit
+  - interview-experience
+  - mba-journey
+  - mba
+  - admissions
 contexttype: SOMCast
 showimage: false
 ---

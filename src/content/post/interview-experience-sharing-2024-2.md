@@ -5,9 +5,10 @@ excerpt: Here is Part 2 of the interview experience of Arka Gohil, Bidisha Bose,
 image: '~/assets/images/blogs/interview-experiences-video-2024/2.jpg'
 category: SOMClips
 tags:
-  - podcast
-  - filmmaking
-  - inter-iit
+  - interview-experience
+  - mba-journey
+  - mba
+  - admissions
 contexttype: SOMCast
 showimage: false
 ---

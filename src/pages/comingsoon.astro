@@ -3,25 +3,13 @@ import Header from '~/components/widgets/Header.astro';
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import { headerData } from '~/navigation';
+import PageLayout from '~/layouts/PageLayout.astro';
 
 const title = `Coming Soon`;
 ---
 
 
-<Layout metadata={{ title }}>
-  <slot name="header">
-    <Header
-      links={headerData?.links}
-      actions={[
-        {
-          text: 'Placement Report',
-          href: 'https://www.som.iitb.ac.in/wp-content/uploads/2016/07/Final-Placement-Report-2021-23.pdf'
-        },
-      ]}
-      showToggleTheme
-      position="right"
-    />
-  </slot>
+<PageLayout metadata={{ title }}>
   <section class="flex items-center h-full p-16">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
@@ -36,4 +24,4 @@ const title = `Coming Soon`;
       </div>
     </div>
   </section>
-</Layout>
+</PageLayout>

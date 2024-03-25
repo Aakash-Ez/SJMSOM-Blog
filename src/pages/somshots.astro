@@ -1,14 +1,17 @@
 ---
-import Layout from '~/layouts/LandingLayout.astro';
 
+import Headline from '~/components/blog/Headline.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'SOMShots - A Gallery of life at SJMSOM IIT Bombay',
 };
 ---
 
-<Layout metadata={metadata}>
+<PageLayout metadata={metadata}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+  <Headline><span style="text-transform: uppercase;">SOMSHOTS</span></Headline>
   <CallToAction
     title="Ethnic Day!"
     subtitle="SJMSOM vibrated with cultural pride as the institute celebrated a vibrant Ethnic Day. Students donned traditional attire from across India, showcasing the nation's rich tapestry through a dazzling display of colors and customs."
@@ -32,4 +35,5 @@ const metadata = {
       },
     ]}
   />
-</Layout>
+</section>
+</PageLayout>
