@@ -28,7 +28,9 @@ export const headerData = {
 
 export const footerData = {
   links: [],
-  secondaryLinks: [],
+  secondaryLinks: [
+    { text: 'soma@sjmsom.in', href: 'mailto:soma@sjmson.in' },
+  ],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/sjmsom_iit_bombay/' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/SJMSOM/' },
